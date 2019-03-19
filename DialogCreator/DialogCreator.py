@@ -40,7 +40,7 @@ def binary_search(array, target):
     upper = len(array)
     i=0
     while lower < upper:  
-        print(str(i))
+        
         x = lower + (upper - lower) // 2
         val = array[x]
         if target == val:
@@ -91,10 +91,7 @@ class Name(Label):
                self.node.to_branch()
     def on_touch_move(self, touch):
        super().on_touch_move(touch)
-       #print(self.node.communication.tools.moving)
-       #if self.node.communication.tools.moving==None or self.node.communication.tools.moving==self.node:
-       #    print("hoba")
-       #    self.node.communication.tools.moving=self.node
+      
        if self.collide_point(touch.x,touch.y):
                self.node.center=(touch.x,touch.y)
                self.node.Main.center=self.node.center
@@ -129,7 +126,7 @@ class Branch(FloatLayout):
      self.layout.pos=self.pos
     def become_active(self,instance=None):
         self.communication.tools.active_branch=self
-        print("nahooi")
+       
         
     def change(self,instance):
         if self.action==1:
@@ -159,9 +156,7 @@ class Branch(FloatLayout):
     def on_touch_move(self, touch):
        super().on_touch_move(touch)
       
-       #print(self.communication.tools.moving)
-       #if self.communication.tools.moving==None or self.communication.tools.moving==self:
-       #    self.communication.tools.moving=self
+   
        if self.collide_point(touch.x,touch.y):
                self.center=(touch.x,touch.y)
                self.layout.center=self.center
@@ -233,7 +228,7 @@ class Node(FloatLayout):
             self.name.color=branch.color
             branch.nodes.append(self)
             self.branch=branch
-            print(self.branch.nodes)
+         
         
 
         
@@ -361,7 +356,7 @@ class Tools(BoxLayout):
            duration_of_function(self.connect_all)
           
     def keyboard_closed(self):
-      #  print('My keyboard have been closed!')
+     
         self.keyboard.unbind(on_key_down=self.on_keyboard_down)
         self.keyboard = None
 
@@ -371,32 +366,29 @@ class Tools(BoxLayout):
 
     def on_keyboard_down(self, keyboard, keycode, text, modifiers):
        
-            print('The key', keycode, 'have been pressed')
-            print(' - text is %r' % text)
-            print(' - modifiers are %r' % modifiers)
             self.shortucts(keycode,text,modifiers)
     
     def on_touch_up(self, touch):
         super().on_touch_up(touch)
         self.moving=None
-        print(self.moving)
+     
     def shortucts(self,keycode, text, modifiers):
          if modifiers==["ctrl"]:
                 if text=="s":
                     self.save_project()
                 elif text=="e":
                     self.export()
-                elif text=="b":
+                #elif text=="b":
                   
-                    new=Branch(self.communication,center_x=Window.mouse_pos[0],center_y=Window.mouse_pos[1])
+                #    new=Branch(self.communication,center_x=Window.mouse_pos[0],center_y=Window.mouse_pos[1])
 
-                    self.communication.branches.append(new)
-                    self.communication.Main.add_widget(new)
+                #    self.communication.branches.append(new)
+                #    self.communication.Main.add_widget(new)
                     
 
          if text=="b":
             self.alt_mode= not self.alt_mode
-            print(self.alt_mode)
+           
          if modifiers==["ctrl"] :
                 if text=="a":
                     self.createNode(Window.mouse_pos[0],Window.mouse_pos[1])
@@ -409,11 +401,11 @@ class Tools(BoxLayout):
         
        
     def createNode(self,x,y):
-        print(self.communication.node_indecies)
+      
         node=Node(self.communication,pos=(x,y),size=(100,100))
 
         self.communication.active_nodes.append(node)
-        print(len(self.communication.active_nodes))
+       
         sorted_insert(self.communication.all,self.communication.node_indecies,node)
 
         
@@ -474,7 +466,7 @@ class Tools(BoxLayout):
         for node in self.communication.active_nodes:
                if not node.is_active():
                     node.minimize()     
-                    print('minim      ized')
+                   
            
                 
            
@@ -486,7 +478,7 @@ class Tools(BoxLayout):
                 if node_data["pos"][1]>-200 and node_data["pos"][1] <Window.height+200:
                   
                     self.restore_node(node_data)
-                    print("restored")
+                    
                     
     def load_node(self,node_data,branch=None,mode=0):
            node=Node(self.communication,pos=(node_data["pos"][0],node_data["pos"][1]),number=node_data["number"])
@@ -512,13 +504,13 @@ class Tools(BoxLayout):
            else:
                node.minimize(1)
            self.communication.Main.add_widget(node)
-           print(len( self.communication.active_nodes))
-           print(' i hule')
+         
+          
            
            return node
     def restore_node(self,node_data):
         
-        print('mla')
+   
         node=self.load_node(node_data,mode = 1)
         self.connect_node(node)
 
@@ -532,7 +524,7 @@ class Tools(BoxLayout):
         if num=="right":
            for node in self.communication.active_nodes:
             node.move_right()
-            print("active")
+          
            for node in self.communication.minimized:
             node["pos"][0]-=DELTA
             
@@ -590,12 +582,12 @@ class Tools(BoxLayout):
 
             with gzip.GzipFile(EXPORT_FOLDER+"\\data.gz",'w') as fid_gz:
     
-                # get json as type dict
+         
         
-                # convert dict to str
+                
                 json_str = json.dumps(data)
                 json_str=json_str.encode()
-            # write string
+           
                 fid_gz.write(json_str)
         
         print("All "+str(len(self.communication.all))+"nodes" +"were saved into json file, for connecting them to game read docs")
@@ -615,7 +607,7 @@ class Tools(BoxLayout):
         print(filename)
         with open(filename) as file:
             data=json.load(file)
-        print(data)
+      
         data=sorted(data,key=getkey)
         for node_data in data:
            
@@ -642,10 +634,9 @@ class Tools(BoxLayout):
        
         
         return "projects\\"+filename
-    def minimap(self,instance):
-        pass
+  
     def connect(self,father,mother):
-        print("match")
+       
         father.connected=True
         father.point=(father.center_x,father.center_y)
         father.temp=2
@@ -674,13 +665,13 @@ class Tools(BoxLayout):
         self.lines=[]
 
        
-        print("connecting")
+       
         for node in self.communication.all:
             self.connect_node(node)
             
-                       
                            
-        print("connections created")               
+                        
+                   
         
         
                 
@@ -717,7 +708,7 @@ class DialogCreatorApp(App):
         self.tools.instance=temp
 
         self.Main.add_widget(temp)
-        self.Main.add_widget(Button(text="MiniMap", pos_hint={'x':.80, 'y':.9},size_hint=(.1, .1),on_press=self.tools.minimap)) 
+       
         self.Main.add_widget(Button(text="Save project",pos_hint={'x':0,'y':.9},size_hint=(.1,.1),on_press=self.tools.save_project))
         self.Main.add_widget(Button(text="Connect all",pos_hint={'x':.1,'y':0},size_hint=(.1,.1),on_press=self.tools.update_drawing))
         self.Main.add_widget(Button(text="Load project",pos_hint={'x':.9,'y':0},size_hint=(.1,.1),on_press=self.tools.load_project))
