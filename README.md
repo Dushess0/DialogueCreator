@@ -13,6 +13,11 @@ Ctrl+S save current project
 Ctrl+E EXPORT as zip archive
 Shift - change mode
 
+Requirements:
+1)Python 3.6 or above
+
+2) Kivy 
+
 
 If you have any questions or propositions, please write me via Telegram @Dushess0. I will help you if you want to use it in your applications.
 Thanks You!
