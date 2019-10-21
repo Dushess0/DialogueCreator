@@ -8,12 +8,17 @@ Using connection mode you can connect nodes, click on green part of answer and a
 
 
 Shortcuts:
+
 Ctrl+A add new node
+
 Ctrl+S save current project
+
 Ctrl+E EXPORT as zip archive
+
 Shift - change mode
 
 Requirements:
+
 1)Python 3.6 or above
 
 2) Kivy 
