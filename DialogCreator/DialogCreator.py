@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.deps import sdl2, glew
+
 from kivy.uix.button import Button
 from kivy.graphics import (Color,Rectangle,Line)
 from kivy.core.window import Window
@@ -13,6 +13,7 @@ from kivy.uix.scatter import Scatter
 from kivy.clock import Clock
 from random import randint
 from bisect import bisect_left
+from kivy.core.window import Window
 import json
 import os
 import gzip
@@ -166,8 +167,8 @@ class Branch(FloatLayout):
 class Node(FloatLayout):
     def __init__(self,Main,number="random",**kwargs):
         super().__init__(**kwargs)
-        self.size_hint=(.2,.08)
-
+        self.resize()
+        print(Window.size)
       
         self.connected=False
         self.point=None
@@ -197,7 +198,8 @@ class Node(FloatLayout):
         self.links=[]
         self.ans_link=[]
         
-   
+    def resize(self):
+        self.size_hint=(250/Window.size[0],48/Window.size[1])
     def delete_answer(self,instance):
         try:
             deleted= self.ans_link.pop()
@@ -367,31 +369,32 @@ class Tools(BoxLayout):
     def on_keyboard_down(self, keyboard, keycode, text, modifiers):
        
             self.shortucts(keycode,text,modifiers)
+
+    def resize_all(self,*args):
+         for node in self.communication.active_nodes:
+           node.resize()
     
     def on_touch_up(self, touch):
         super().on_touch_up(touch)
         self.moving=None
      
     def shortucts(self,keycode, text, modifiers):
-         if modifiers==["ctrl"]:
-                if text=="s":
+        
+          
+         if keycode[1]=="s":
                     self.save_project()
-                elif text=="e":
+         elif keycode[1]=="e":
                     self.export()
-                #elif text=="b":
-                  
-                #    new=Branch(self.communication,center_x=Window.mouse_pos[0],center_y=Window.mouse_pos[1])
-
-                #    self.communication.branches.append(new)
-                #    self.communication.Main.add_widget(new)
+               
                     
-
-         if text=="b":
+ 
+         if keycode[1]=="b":
             self.alt_mode= not self.alt_mode
-           
-         if modifiers==["ctrl"] :
-                if text=="a":
+         
+         
+         if keycode[1]=="a":
                     self.createNode(Window.mouse_pos[0],Window.mouse_pos[1])
+                    print("fine")
             
                
          if keycode[1]=="shift"or keycode[1]=="rshift":
@@ -710,8 +713,9 @@ class DialogCreatorApp(App):
         self.Main.add_widget(temp)
        
         self.Main.add_widget(Button(text="Save project",pos_hint={'x':0,'y':.9},size_hint=(.1,.1),on_press=self.tools.save_project))
-        self.Main.add_widget(Button(text="Connect all",pos_hint={'x':.1,'y':0},size_hint=(.1,.1),on_press=self.tools.update_drawing))
+        self.Main.add_widget(Button(text="Reload Lines",pos_hint={'x':.1,'y':0},size_hint=(.1,.1),on_press=self.tools.update_drawing))
         self.Main.add_widget(Button(text="Load project",pos_hint={'x':.9,'y':0},size_hint=(.1,.1),on_press=self.tools.load_project))
+        self.Main.add_widget(Button(text="Resize nodes",pos_hint={'x':0,'y':0},size_hint=(.1,.1),on_press=self.tools.resize_all))
         
         self.node_indecies=[]
         self.active_nodes=[]
