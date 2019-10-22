@@ -25,7 +25,7 @@ Screenshots:
 2)adding more answers
 ![screenshot](screenshot2.png)
 
-3)example of json format for this project [file](DialogCreator\projects\presentation.json)
+3)example of json format for this project [file](DialogueCreator/projects/presentation.json)
 ![screenshot](screenshot3.png)
 
 Requirements:
