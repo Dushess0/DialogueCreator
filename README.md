@@ -9,13 +9,21 @@ Using connection mode you can connect nodes, click on green part of answer and a
 
 Shortcuts:
 
-Ctrl+A add new node
+A add new node
 
-Ctrl+S save current project
+S save current project
 
-Ctrl+E EXPORT as zip archive
+E EXPORT as zip archive
 
 Shift - change mode
+
+Screenshots:
+
+1) example of project
+![screenshot](screenshot1.png)
+
+2)adding more answers
+![screenshot](screenshot2.png)
 
 Requirements:
 
