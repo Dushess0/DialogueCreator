@@ -25,6 +25,9 @@ Screenshots:
 2)adding more answers
 ![screenshot](screenshot2.png)
 
+3)example of json format for this project [file](DialogueCreator/projects/presentation.json)
+![screenshot](screenshot3.png)
+
 Requirements:
 
 1) Python 3.6 or above
