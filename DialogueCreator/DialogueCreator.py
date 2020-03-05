@@ -383,10 +383,7 @@ class Tools(BoxLayout):
           
          if keycode[1]=="s":
                     self.save_project()
-         elif keycode[1]=="e":
-                    self.export()
-               
-                    
+                     
  
          if keycode[1]=="b":
             self.alt_mode= not self.alt_mode
