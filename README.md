@@ -13,7 +13,6 @@ A add new node
 
 S save current project
 
-E EXPORT as zip archive
 
 Shift - change mode
 
