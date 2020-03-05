@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DialogCreator", "DialogCreator\DialogCreator.pyproj", "{90801FBF-9C41-41F2-A1F4-FD1782AC4E40}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "DialogueCreator", "DialogueCreator\DialogueCreator.pyproj", "{1A61508B-E4D9-4A27-BCB5-C42A650B4044}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{90801FBF-9C41-41F2-A1F4-FD1782AC4E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90801FBF-9C41-41F2-A1F4-FD1782AC4E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A61508B-E4D9-4A27-BCB5-C42A650B4044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A61508B-E4D9-4A27-BCB5-C42A650B4044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {66027EEE-CCEB-4C67-995E-DFD3E41AE483}
+		SolutionGuid = {5461B5FF-16DD-41C8-96FE-8C8A7EEB8BA8}
 	EndGlobalSection
 EndGlobal

@@ -18,7 +18,7 @@ import json
 import os
 import gzip
 DIALOG_FOLDER="dialog\\"
-EXPORT_FOLDER="D:\Lessons\KIVY lesson\KIVY\KIVY\data"
+EXPORT_FOLDER="data"
 DIGITS=8
 DELTA=40
 
@@ -96,7 +96,7 @@ class Name(Label):
        if self.collide_point(touch.x,touch.y):
                self.node.center=(touch.x,touch.y)
                self.node.Main.center=self.node.center
-               print(self.pos)
+               #print(self.pos)
            
 class Branch(FloatLayout):
     def __init__(self,communication, **kwargs):
@@ -168,7 +168,7 @@ class Node(FloatLayout):
     def __init__(self,Main,number="random",**kwargs):
         super().__init__(**kwargs)
         self.resize()
-        print(Window.size)
+        #print(Window.size)
       
         self.connected=False
         self.point=None
@@ -223,7 +223,7 @@ class Node(FloatLayout):
         else:
             branch=given
         if branch!=None:
-            print("succes")
+           #print("succes")
         
       
             self.communication.tools.active_branch.nodes.append(self)
@@ -394,7 +394,7 @@ class Tools(BoxLayout):
          
          if keycode[1]=="a":
                     self.createNode(Window.mouse_pos[0],Window.mouse_pos[1])
-                    print("fine")
+                 
             
                
          if keycode[1]=="shift"or keycode[1]=="rshift":
@@ -695,7 +695,7 @@ def duration_of_function(function):
 
         function()
        
-        print_elapsed()
+       # print_elapsed()
  
 
 class DialogCreatorApp(App):
